@@ -138,7 +138,7 @@
 	8、cancel 取消fork 异步操作。
 	9、all , race 多个任务并行执行。all 会在 所有任务都执行完后结束，如果有错误的，则取消所有操作，race 会在第一个任务执行成功之后，取消剩下的所有任务。
 
-九、 react setState 
+九、 react setState  
 	1、setState 是一个异步操作。
 	2、如果在一个函数中多次执行setState ，则最好是 将一个返回 object 的函数传入 setState，否则setState 会将所有的操作合并成一个 state，执行一次，这样就会忽略掉最后一个之前的操作。
 	3、react 更新数据是一个 重新渲染组件的过程
