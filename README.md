@@ -136,36 +136,40 @@ vue Object.defineProperty(obj,obj.data,{set:function(){},get:function(){}}) 双�
 4.如果在 window 环境中执行，则this 指向window，严格模式下指向 undefined。
 
 5.call ，apply ，bind 可以改变 函数的this指向，可将this指向传入的对象。区别不同的是
-		
-		1.call 和 apply 的参数不同，call 的参数用逗号隔开，apply 的参数用数组包括。
-		
-		2.call 的执行速度永远比apply 的速度要快。在safari 的浏览器里差别不是很大，但在chrome浏览器中差别巨大，apply 的执行速度比call慢10倍。
 
-		提高效率就是 用call来模拟apply，使用 switch case 来判断apply参数的个数，然后使用 call（obj，args[0],args[1]）。
+**call 和apply 的异点		
+
+1.call 和 apply 的参数不同，call 的参数用逗号隔开，apply 的参数用数组包括。
+		
+2.call 的执行速度永远比apply 的速度要快。在safari 的浏览器里差别不是很大，但在chrome浏览器中差别巨大，apply 的执行速度比call慢10倍。
+
+提高效率就是 用call来模拟apply，使用 switch case 来判断apply参数的个数，然后使用 call（obj，args[0],args[1]）。
 
 ### slice、substr 和 sunstring
-	1、substring（index1，index2）index1是从第index1位开始截取，然后截取到第index2 位之前结束。sunstring 以参数中较小的一个作为起始位置，如果为负数，则直接转换为0。
-	2、substr（index1，index2） index1 是从第index1位开始截取，然后 截取index2的字符，如果为负数，则只将第一个参数与字符串的长度相加。
-	3、slice 和 substring功能一样，只是如果参数是负数，则将负数和字符串的长度相加，然后向右。
+
+1.`substring`（index1，index2）index1是从第index1位开始截取，然后截取到第index2 位之前结束。sunstring 以参数中较小的一个作为起始位置，如果为负数，则直接转换为0。
+
+2.`substr`（index1，index2） index1 是从第index1位开始截取，然后 截取index2的字符，如果为负数，则只将第一个参数与字符串的长度相加。
+
+3.`slice` 和 `substring`功能一样，只是如果参数是负数，则将负数和字符串的长度相加，然后向右。
 	
 ### 七、强缓存和协商缓存
 
 1.**强缓存： 
 		
-	http/1.0 使用 expires 设置过期时间
+http/1.0 使用 expires 设置过期时间
 	
-	http/1.1 使用 cache-control  只有 no-cache，no-store，max-age ，public，private。
+http/1.1 使用 cache-control  只有 no-cache，no-store，max-age ，public，private。
 	
-	当expires 和 cache-control都存在的情况下，cache-control的优先级高于expires.
+当expires 和 cache-control都存在的情况下，cache-control的优先级高于expires.
 	
 2.**协商缓存：
 		
-	`last-modifield/if-modifield-since`
-	`Etag/if-None-Match `
-	会在服务器第一次返回数据时通过header 返回缓存信息。
+`last-modifield/if-modifield-since``Etag/if-None-Match `会在服务器第一次返回数据时通过header 返回缓存信息。
 		
-	强缓存的状态码为 200， 协商缓存的状态码为 304.
-	强缓存直接从缓存中取，协商缓存需要和服务器通信协商，告知缓存是否可用。
+强缓存的状态码为 200， 协商缓存的状态码为 304.
+	
+强缓存直接从缓存中取，协商缓存需要和服务器通信协商，告知缓存是否可用。
 	
 ### 八 、 redux-saga 引入  redux-saga/effects
 
