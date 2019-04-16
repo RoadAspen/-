@@ -421,9 +421,9 @@ Promise.race([promise1,promise2]) 如果有一个成功完成，则 成功，如
 	
 **浅拷贝
 
-	1、对象引用的拷贝。 Object.assign  ，通过 Object.assign({},a) ,可以实现一层的深拷贝。如果 值中有 其他对象的引用，则依旧是浅拷贝。
+1.对象引用的拷贝。 Object.assign  ，通过 Object.assign({},a) ,可以实现一层的深拷贝。如果 值中有 其他对象的引用，则依旧是浅拷贝。
 	
-	2、 ...展开运算符。
+2. ...展开运算符。
 
 ### 二十、AMD  RequireJs 。
 
@@ -557,16 +557,16 @@ ie 不兼容。
 	 
 以下是利用原生js实现polyfill
  	
-``if（!Object.is）{
-		Object.is = function(x,y){
-			if(x === y){ 如果相等，则判断 x是否为0 或者 如果x等于0时，判断 1/x 等于 无穷大，1/y 等于 无穷大，是否相等， 1/-0 === - infinity. 1/+0 == infinity
-				return x!==0 || 1/x === 1/y;  //符号会随着无穷显示。
+if（!Object.is）{
+	Object.is = function(x,y){
+		if(x === y){ 如果相等，则判断 x是否为0 或者 如果x等于0时，判断 1/x 等于 无穷大，1/y 等于 无穷大，是否相等， 1/-0 === - infinity. 1/+0 == infinity
+			return x!==0 || 1/x === 1/y;  //符号会随着无穷显示。
 			
-			}else{
-				return x!==x &&y!==y  // 如果不相等，则判断x 和y 是否都不等于自身，如果都等与自身，则说明x，y 都为NaN，返回true。只有NaN 不等于自身。
-			}
+		}else{
+			return x!==x &&y!==y  // 如果不相等，则判断x 和y 是否都不等于自身，如果都等与自身，则说明x，y 都为NaN，返回true。只有NaN 不等于自身。
 		}
-}``
+	}
+}
 
 ### 二十八、 什么是闭包 
 
@@ -714,7 +714,7 @@ webpack 打包流程  1、读取文件，分析模块依赖 2、解析文件，�
 
 ### 四十、new 操作符 实现了什么功能。
 
-``function Person（name）{
+function Person（name）{
 	this.name = name;
 	this.getname = function(){return this.name}
 }
@@ -726,7 +726,7 @@ obj.__proto__ = Person.prototype;
 var res = Person.call(obj,'name');
 
 
-return typeof res=== 'object'?res:obj ;``
+return typeof res=== 'object'?res:obj ;
 
 ### 四十一、如何判断一个变量为数组类型。
 	
@@ -938,7 +938,7 @@ redux 的缺点是  一个组件需要的数据都需要父组件传过来。
 
 4.原型式继承  Object.create()，一个函数接受一个对象参数，然后创建一个新的构造函数，将对象赋值给这个构造函数的原型，然后返回新的构造函数实例。
 		
-	``function jicheng(obj){ var newfun = function(){};newfun.prototype = obj;return new newfun(); }``
+function jicheng(obj){ var newfun = function(){};newfun.prototype = obj;return new newfun(); }
 
 5.寄生式继承 不能函数复用。在原型式继承的基础上添加私有的属性和方法。
 
