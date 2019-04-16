@@ -943,3 +943,30 @@ function jicheng(obj){ var newfun = function(){};newfun.prototype = obj;return n
 5.寄生式继承 不能函数复用。在原型式继承的基础上添加私有的属性和方法。
 
 6.寄生式组合复用  在原型式继承的基础上将 返回新的对象的constructor 指向另一个需要继承的构造函数。
+
+### 六十三、set map 区别
+
+`Map` 二维数组  [['name','hahaha'],['bob',66]] ; Map实例有`get`,`has`,	`delete`,`set` 四个api，增删改查。
+
+`Set` 一个不含重复项的一维数组。 Set 实例有 `add`，`delete` 两个api
+
+### 六十四、object 的 复制。
+
+1.浅复制。 Object.assign   ， array 的 slice()。
+
+2.深复制    JSON.parse(JSON.stringify()); 如果属性存在 undefined，function ，symbol,会被忽略。
+
+3.deepcopy 函数。深拷贝。
+      function deepCopy(obj) {
+	 var result = Array.isArray(obj) ? [] : {};
+	 for (var key in obj) {
+	    if (obj.hasOwnProperty(key)) {
+		  if (typeof obj[key] === 'object') {
+		    result[key] = deepCopy(obj[key]);   //递归复制
+		  }else {
+		      result[key] = obj[key];
+		  }
+	     }
+	  }
+	  return result;
+       }
