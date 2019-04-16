@@ -1,36 +1,40 @@
-# 一、跨域。
-	1.jsonp。 通过script 标签的 src 属性 结尾添加 ？callback= callback ,服务器接收请求时 将 数据包含在callback函数中。然后通过函数执行获取跨域数据。 script 标签有一个 defer 和async 的属性，都是让script 异步加载，不阻塞页面的渲染。但是 多个 具有defer属性的script 的执行顺序是一定的，并且执行时会阻塞后续defer 的script执行。 但是async 不能保证执行的顺序。而是谁加载完谁先执行。使用时，如果涉及页面DOm操作，则使用defer，如果不涉及页面操作，则使用async。
-	2.服务端配置。
-	3.cors。
-	4.proxy ，服务器代理。
-	5.window.domin + iframe 。 iframe 的缺点是 会阻塞后续资源的load，一般通过 动态添加 iframe 的src属性来解决。
-<table>
-    <tr>
-        <td>Foo</td>
-    </tr>
-</table>
-二、react diff算法。 vue Object.defineProperty
+### 一、跨域。
+	###### 1.jsonp。
+		通过script 标签的 src 属性 结尾添加 ？callback= callback ,服务器接收请求时 将 数据包含在callback函数中。然后通过函数执行获取跨域数据。 
+		script 标签有一个 defer 和async 的属性，都是让script 异步加载，不阻塞页面的渲染。但是 多个 具有defer属性的script 的执行顺序是一定的，并且
+		执行时会阻塞后续defer 的script执行。 但是async 不能保证执行的顺序。而是谁加载完谁先执行。使用时，如果涉及页面DOm操作，则使用defer，如果不
+		涉及页面操作，则使用async。
+	###### 2.服务端配置。
+	###### 3.cors。
+	###### 4.proxy ，服务器代理。
+	###### 5.window.domin + iframe 。 iframe 的缺点是 会阻塞后续资源的load，一般通过 动态添加 iframe 的src属性来解决。
+### 二、react diff算法。###### vue Object.defineProperty
 
 	react 的diff算法，通过深度优先 比较 virtual dom。
 	
-	Object.defineProperty(obj,obj.data,{set:function(){},get:function(){}})
+	vue Object.defineProperty(obj,obj.data,{set:function(){},get:function(){}}) 双向数据绑定
 	
-三、css3 flex 布局.
+### 三、css3 flex 布局.
 	
-	1、父元素设置 display：flex。 行内元素也可以使用flex布局，display：inline-flex； display：-webkit-flex;使用flex布局之后，子元素的 float，clear，vertical-align 属性将失效。
+	1.父元素设置 display：flex。 
+		行内元素也可以使用flex布局，display：inline-flex； display：-webkit-flex;使用flex布局之后，子元素的
+	float，clear，vertical-align 属性将失效。
 	
-	2、容器上有多个属性 
-		flex-direction 主轴方向  row/row-reverse/column/ column-reverse; 默认为row
-		flex-wrap 是否换行  nowrap 不换行 wrap 换行，第一行在上方 ，wrap-reverse 换行，第一行在下边。 默认为 不换行
-		flex-flow  direction 和 wrap 的组合写法  flex-flow ：flex-direction flex-wrap
+	2.容器上有多个属性 
+	    flex-direction 主轴方向  row/row-reverse/column/ column-reverse; 默认为row
+	    flex-wrap 是否换行  nowrap 不换行 wrap 换行，第一行在上方 ，wrap-reverse 换行，第一行在下边。 默认为 不换行
+	    flex-flow  direction 和 wrap 的组合写法  flex-flow ：flex-direction flex-wrap
 		
-		justify-content 定义主轴上的对齐方式。 flex-start 左侧 ，flex-end 右侧 ，center 中间 ，space-between  相邻元素之间的距离相等，两边为0.space-around 所有间隔都相等，包括元素与边界的距离。item之间的距离比item与边框的距离大一倍。
+	    justify-content 定义主轴上的对齐方式。 flex-start 左侧 ，flex-end 右侧 ，center 中间 ，space-between  相邻元素之间的距离相等，
+		两边为0.space-around 所有间隔都相等，包括元素与边界的距离。item之间的距离比item与边框的距离大一倍。
 
-		align-items 在与主轴交叉的轴上如何对齐。 flex-start flex-end center baseline stretch. 默认为 stretch。stretch没设置高度的前提下，占据整个交叉轴。
+		align-items 在与主轴交叉的轴上如何对齐。 flex-start flex-end center baseline stretch. 默认为 stretch。stretch没设置高度的前提
+		下，占据整个交叉轴。
 		
-		align-content 在多条主轴上 的 对齐方式。如果只有一根轴线，则不起作用。	flex-start flex-end center stretch space-between space-around。stretch没设置高度的前提下，占据整个交叉轴。
+		align-content 在多条主轴上的对齐方式。如果只有一根轴线，则不起作用。flex-start flex-end center stretch space-between space-around。
+		stretch没设置高度的前提下，占据整个交叉轴。
  
-	3、子元素设置flex 值
+	3.子元素设置flex 值
 		order 项目的排列顺序，数值越小，排列越靠前，默认为0.
 		flex-grow 定义项目的放大比例，默认为0，即使存在剩余空间，也不放大。
 		flex-shrink 定义项目的缩小比例。默认为1，如果空间不足，该项目缩小。所有都为1时，所有的项目都将等比例缩小。
