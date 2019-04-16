@@ -1,13 +1,13 @@
 ### 一、跨域。
-	###### 1.jsonp。
-		通过script 标签的 src 属性 结尾添加 ？callback= callback ,服务器接收请求时 将 数据包含在callback函数中。然后通过函数执行获取跨域数据。 
-		script 标签有一个 defer 和async 的属性，都是让script 异步加载，不阻塞页面的渲染。但是 多个 具有defer属性的script 的执行顺序是一定的，并且
-		执行时会阻塞后续defer 的script执行。 但是async 不能保证执行的顺序。而是谁加载完谁先执行。使用时，如果涉及页面DOm操作，则使用defer，如果不
-		涉及页面操作，则使用async。
-	###### 2.服务端配置。
-	###### 3.cors。
-	###### 4.proxy ，服务器代理。
-	###### 5.window.domin + iframe 。 iframe 的缺点是 会阻塞后续资源的load，一般通过 动态添加 iframe 的src属性来解决。
+	1.jsonp。
+	通过script 标签的 src 属性 结尾添加 ？callback= callback ,服务器接收请求时 将 数据包含在callback函数中。然后通过函数执行获取跨域数据。 
+	script 标签有一个 defer 和async 的属性，都是让script 异步加载，不阻塞页面的渲染。但是 多个 具有defer属性的script 的执行顺序是一定的，并且
+	执行时会阻塞后续defer 的script执行。 但是async 不能保证执行的顺序。而是谁加载完谁先执行。使用时，如果涉及页面DOm操作，则使用defer，如果不
+	涉及页面操作，则使用async。
+	2.服务端配置。
+	3.cors。
+	4. *proxy* ，服务器代理。
+	5.window.domin + iframe 。 iframe 的缺点是 会阻塞后续资源的load，一般通过 动态添加 iframe 的src属性来解决。
 ### 二、react diff算法。###### vue Object.defineProperty
 
 	react 的diff算法，通过深度优先 比较 virtual dom。
