@@ -6,7 +6,7 @@
 	涉及页面操作，则使用async。
 	2.服务端配置。
 	3.cors。
-	4. *proxy* ，服务器代理。
+	4. * proxy * ，服务器代理。
 	5.window.domin + iframe 。 iframe 的缺点是 会阻塞后续资源的load，一般通过 动态添加 iframe 的src属性来解决。
 ### 二、react diff算法。###### vue Object.defineProperty
 
