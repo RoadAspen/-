@@ -985,3 +985,28 @@ function jicheng(obj){ var newfun = function(){};newfun.prototype = obj;return n
 
 4.`margin` 和`padding` 的基准是相同的。
 
+5、border 设置百分比会报错。
+
+### 六十六、FOUC 及 FOUC 的解决方法。
+
+`FOUC` （无样式内容闪烁）  主要是由@import css  或者 多个style 标签或者css文件出现在页面底部引入导致的页面闪烁及花屏。
+
+解决方法是 用link 加载css，放在head里。
+
+### 六十七、非缓存模式刷新页面。
+
+location.reload(true)  当参数为true时，会强制 非缓存刷新页面。
+
+当参数为false 的时候，会对比header 中的 If-Modified-Since 来对比服务器是否使用缓存刷新。
+
+### 六十八、为什么利用多个域名来存储网站资源会更有效？
+
+1. CDN 缓存更方便。CDN是一种组合技术，其中包括源站、缓存服务器、智能DNS几个重要部分。
+
+2. 突破浏览器并发限制
+
+3. 节约 cookie 带宽
+
+4. 节约主域名的连接数，优化页面响应速度
+
+5. 防止不必要的安全问题
