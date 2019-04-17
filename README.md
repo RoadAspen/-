@@ -970,3 +970,18 @@ function jicheng(obj){ var newfun = function(){};newfun.prototype = obj;return n
 	  }
 	  return result;
        }
+
+### 六十五。 元素竖向的百分比设定是相对于容器的高度吗？
+
+**不是。
+
+**元素竖向的百分比设定。  
+
+1.`height` 百分比， 基于容器的高度。
+
+2.`padding-left`,`padding-right` 基于容器的宽度。
+
+3.`padding-top`，`padding-bottom` 也是基于容器的宽度。
+
+4.`margin` 和`padding` 的基准是相同的。
+
