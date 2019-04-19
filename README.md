@@ -995,9 +995,9 @@ function jicheng(obj){ var newfun = function(){};newfun.prototype = obj;return n
 
 ### 六十七、非缓存模式刷新页面。
 
-location.reload(true)  当参数为true时，会强制 非缓存刷新页面。
+`location.reload(true)`  当参数为true时，会强制 非缓存刷新页面。
 
-当参数为false 的时候，会对比header 中的 If-Modified-Since 来对比服务器是否使用缓存刷新。
+当参数为false 的时候，会对比`header` 中的 `If-Modified-Since` 来对比服务器是否使用缓存刷新。
 
 ### 六十八、为什么利用多个域名来存储网站资源会更有效？
 
@@ -1010,3 +1010,18 @@ location.reload(true)  当参数为true时，会强制 非缓存刷新页面。
 4. 节约主域名的连接数，优化页面响应速度
 
 5. 防止不必要的安全问题
+
+### 六十九、文件上传。
+
+1. 使用`form` ，enctype = “multipart/form-data”
+
+2.使用 `formData`  ，创建 new FormData（）；添加key，value值。通过ajax上传。
+
+**form 的 enctype 的值有三种  
+
+- `application/x-www-form-urlencoded`  再发送前编码所有字符。
+
+- `multipart/form-data`   不对字符编码。在使用包含文件上传控件的表单时，必须使用该值。
+
+- `text/plain`  空格转换为“+”加号，但不对特殊字符编码。
+
