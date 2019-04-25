@@ -1025,3 +1025,14 @@ function jicheng(obj){ var newfun = function(){};newfun.prototype = obj;return n
 
 - `text/plain`  空格转换为“+”加号，但不对特殊字符编码。
 
+### 七十、redux 中间件
+
+**由于redux只能处理同步的Action，但可以通过中间件来处理其他类型的action。
+
+1.`redux-thunk`  主要返回一个函数，在未来某一时间 dispatch 一个action 。 体现在延迟动作的发送。 重复代码太多。
+
+2.`redux-promise` 主要返回一个promise在payload中。 如果payload是一个promise，则会解析 resolve或者reject 的值。无法乐观更新。
+
+3.`redux-promise-middleware` 相对与promise ，采取了更为温和渐进式的思路。保留了和redux-thunk类似的三个action,get,fuilfill,failed.
+
+4.`redux-saga` 使用es6 的 generator 函数，避免回调地狱。
