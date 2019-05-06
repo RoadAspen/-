@@ -1036,3 +1036,19 @@ function jicheng(obj){ var newfun = function(){};newfun.prototype = obj;return n
 3.`redux-promise-middleware` 相对与promise ，采取了更为温和渐进式的思路。保留了和redux-thunk类似的三个action,get,fuilfill,failed.
 
 4.`redux-saga` 使用es6 的 generator 函数，避免回调地狱。
+
+### 七十一、Echarts 与 HighCharts 的区别
+
+1.`echarts`基于`canvas`。`highcharts`基于`SVG`。
+
+2.`echarts` 是百度出品，国产，图表类型很多，地图类图表支持较多，地图功能强大。`highcharts` 图表类型较少，但是基于svg，则更易于扩展。
+
+3.`highcharts` 收费，商业需授权 ， `echarts` 免费。
+
+4.SVG 基于DOM操作，频繁的DOM操作会影响浏览器的性能，数据复杂度高的话，会较慢图表渲染速度，目前可以结合 React 的VirtualDom 技术减少DOM操作。
+
+5.Canvas 则存在大量用户交互场景时，要为细粒度的元素添加事件处理器，必须涉及到边缘检测算法，无疑为开发带来了一定的难度，同时，采用这种方法并不一定精确。
+
+6.兼容性问题，二者都兼容到IE6+。
+
+所以基于 技术、生态、商业化、性能、定制化 五个方面来考虑。 有预算、定制化、交互较多 就选 highcharts。 无预算、通用类表、交互较少对细粒度无太高要求、地图类图表较多 选用 echarts。
