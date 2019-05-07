@@ -195,9 +195,11 @@ http/1.1 使用 cache-control  只有 no-cache，no-store，max-age ，public，
 
 1.setState 是一个异步操作。
 
-2.如果在一个函数中多次执行setState ，则最好是 将一个返回 object 的函数传入 setState，否则setState 会将所有的操作合并成一个 state，执行一次，这样就会忽略掉最后一个之前的操作。
+2.如果在一个函数中多次执行setState ，则最好是 将一个返回 object 的函数传入 setState，否则setState 会将所有的操作合并成一个 state，执行一次，这样就会忽略掉最后一个之前的操作，传入的函数的参数为两个 prevState，props。
 
-3.react 更新数据是一个 重新渲染组件的过程
+3.setState 更新数据是一个 重新渲染组件的过程，触发重绘，即使state并没有什么变化，但只要调用setState就要重绘render，所以为了避免不必要的更新，要在shouldComponentUpdate 中判断是否需要重新渲染。。
+
+4.setState 可以使用第二个参数，即传入一个函数，来作为setState 的一个state更新成功后的回调函数，在函数中可以使用更新后的参数。
 
 ### 十、Event Loop。 setTimeout 和 Promise 的执行顺序。
 
@@ -219,22 +221,36 @@ http/1.1 使用 cache-control  只有 no-cache，no-store，max-age ，public，
 
 ### 十二、react 的生命周期 分三个阶段。
 
-**组件挂载阶段**<br>
-1.getDefaultProps  获取组件默认的属性。<br>
-2.getIniticalState 获取组件默认的状态。<br>
-3.componentWillMount 组件即将挂载。<br>
-4.render 组件渲染。<br>
-5.componentDidMount 组件挂载完成。<br>
-**组件 更新阶段**<br>
-6.componentReviceProps 组件接受新的props。<br>
-7.shouldComponentUpdate  组件是否刷新。<br>
-8.componentWillUpdate 组件即将更新。<br>
-9.render  组件渲染。<br>
-10.componentDidUpdate 组件完成更新。<br>
-	**组件销毁阶段**<br>
-11.componentWillUnmount  组件即将销毁。<br>
+**组件挂载阶段**
 
-其中 shouldComponentUpdate 阶段是react 优化的重点，可以自定义diff算法避免不必要的dom操作。<br>
+1.getDefaultProps  获取组件默认的属性。
+
+2.getIniticalState 获取组件默认的状态。
+
+3.componentWillMount 组件即将挂载。
+
+4.render 组件渲染。
+
+5.componentDidMount 组件挂载完成。
+
+**组件 更新阶段**
+
+6.componentWillReviceProps 组件接受新的props，参数1个，nextprops。 props改变时触发。
+
+7.shouldComponentUpdate  组件是否刷新，参数两个 nextprops，nextState。 props 和 state改变时触发，作对比，决定是否更新，返回false会阻止组件重新渲染，会阻止 will update，render，didupdate 执行。
+
+8.componentWillUpdate 组件即将更新，参数两个 nextprops，nextState。
+
+9.render  组件渲染。
+
+10.componentDidUpdate 组件完成更新，参数两个  prevProps，prevState，此时已经更新。
+
+**组件销毁阶段**
+	
+11.componentWillUnmount  组件即将销毁。
+
+其中 shouldComponentUpdate 阶段是react 优化的重点，可以自定义diff算法避免不必要的dom操作。
+
 使用 key值来帮助react识别列表中所有子组件的最小变化。
 
 react 通过render 实现数据的绑定。
@@ -407,7 +423,7 @@ Promise.race([promise1,promise2]) 如果有一个成功完成，则 成功，如
 	
 5.Icon 图标组件  icon 引用阿里巴巴Icon图标库的js
 
-6. message 全局提示。
+6.message 全局提示。
 	
 7.Model 对话框。
 
@@ -452,6 +468,8 @@ define定义模块，将依赖模块先加载，然后在callback中使用，ret
 非必须 ?:  
 
 联合类型 | ：
+
+交叉类型 ：&
 
 继承 extends  多个继承用 逗号 隔开 。
 
@@ -1052,3 +1070,13 @@ function jicheng(obj){ var newfun = function(){};newfun.prototype = obj;return n
 6.兼容性问题，二者都兼容到IE6+。
 
 所以基于 技术、生态、商业化、性能、定制化 五个方面来考虑。 有预算、定制化、交互较多 就选 highcharts。 无预算、通用类表、交互较少对细粒度无太高要求、地图类图表较多 选用 echarts。
+
+### 七十二、判断一个对象是否为空。
+
+1.使用 `JSON.stringify(obj)` 将 对象转换为字符串，与'{}'做对比，是否相等。
+
+2.使用 Object.getOwnPropertyNames(obj) 来判断是否存在，返回值为一个数组，类似于Object.keys 返回的结果。
+
+3.使用 for in 循环，for(let key in obj){return false} return true ，有缺点，即当Object.prototype上手动添加了属性，则一直返回false。
+
+4.使用 ES6 `Object.keys()` 或者 `Object.values()`  的长度来判断。
