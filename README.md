@@ -1,3 +1,5 @@
+本文偏向于react+redux+redux-saga。包含 js基础，react基础，redux数据流。
+
 ### 一、跨域。
 
 1.**jsonp**。通过script 标签的 src 属性 结尾添加 `？callback= callback` ,服务器接收请求时 将 数据包含在callback函数中。然后通过函数执行获取跨域数据。 script 标签有一个 defer 和async 的属性，都是让script 异步加载，不阻塞页面的渲染。但是 多个 具有defer属性的script 的执行顺序是一定的，并且执行时会阻塞后续defer 的script执行。 但是async 不能保证执行的顺序。而是谁加载完谁先执行。使用时，如果涉及页面DOm操作，则使用defer，如果不涉及页面操作，则使用async。
