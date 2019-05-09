@@ -1,10 +1,10 @@
-## 一、跨域。
+### 一、跨域。
 
 1.**jsonp**。通过script 标签的 src 属性 结尾添加 `？callback= callback` ,服务器接收请求时 将 数据包含在callback函数中。然后通过函数执行获取跨域数据。 script 标签有一个 defer 和async 的属性，都是让script 异步加载，不阻塞页面的渲染。但是 多个 具有defer属性的script 的执行顺序是一定的，并且执行时会阻塞后续defer 的script执行。 但是async 不能保证执行的顺序。而是谁加载完谁先执行。使用时，如果涉及页面DOm操作，则使用defer，如果不涉及页面操作，则使用async。
 	
 2.**服务端配置。
 
-3.**cors。
+3. **cors。
 
 4.**proxy** ，服务器代理。
 
@@ -16,7 +16,7 @@ react 的diff算法，通过深度优先 比较 virtual dom。
 	
 vue Object.defineProperty(obj,obj.data,{set:function(){},get:function(){}}) 双向数据绑定
 	
-## 三、css3 flex 布局.
+### 三、css3 flex 布局.
 	
 1.父元素设置 `display：flex`。 
 
@@ -399,21 +399,21 @@ Promise.race([promise1,promise2]) 如果有一个成功完成，则 成功，如
 	
 1.Form 表单组件 Form.Item
 		
-		Input 输入框
-		
-		Select 下拉框
-		
-		checkbox 复选框
-		
-		Cascader 级联选择。
-		
-		DatePicker 日期组件。
-		
-		Upload 	上传组件。
-		
-		search  搜索组件 ，onsearch ，enterbutton
-		
-		page
+	Input 输入框
+
+	Select 下拉框
+
+	checkbox 复选框
+
+	Cascader 级联选择。
+
+	DatePicker 日期组件。
+
+	Upload 	上传组件。
+
+	search  搜索组件 ，onsearch ，enterbutton
+
+	page
 
 2.Table 表格组件
 
@@ -594,9 +594,17 @@ if（!Object.is）{
 
 2.闭包的使用场景。面向对象，封装。
 
-### 二十九、面向对象，抽象，封装，继承，多态。 原型链。
+### 二十九、面向对象，抽象，封装，继承，多态，聚合。 原型链。
 
-		
+1.实例抽象化，提取共同点，属性。
+
+2.封装，在抽象类上添加行为，提供对外接口。
+
+3.多态，多个实例的相同行为可根据实例属性的不同呈现出不同的行为标准。
+
+4.原型链 js面向对象实为原型继承。
+
+5.聚合 多个对象聚合可以形成新的对象。
 
 ### 三十、面向对象和面向过程。
 
@@ -1031,9 +1039,9 @@ function jicheng(obj){ var newfun = function(){};newfun.prototype = obj;return n
 
 ### 六十九、文件上传。
 
-1. 使用`form` ，enctype = “multipart/form-data”
+1. 使用`form` ，enctype = “multipart/form-data”,原生表单上传。
 
-2.使用 `formData`  ，创建 new FormData（）；添加key，value值。通过ajax上传。
+2.使用 `formData`  ，创建 var files = new FormData（）；添加 files.append(key,value)。通过ajax上传。
 
 **form 的 enctype 的值有三种  
 
